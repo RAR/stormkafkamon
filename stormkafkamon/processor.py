@@ -55,8 +55,7 @@ def process(spouts):
             try:
                 k = KafkaClient(p['broker']['host'], p['broker']['port'])
             except Exception, e:
-                print 'Failed to contact Kafka broker %s (%s)' %
-                                     (p['broker']['host'], str(e))
+                print 'Failed to contact Kafka broker %s (%s)' % (p['broker']['host'], str(e))
                 continue; #skip failed broker and continue
             earliest_off = OffsetRequest(p['topic'], p['partition'], -2, 1)
             latest_off = OffsetRequest(p['topic'], p['partition'], -1, 1)
